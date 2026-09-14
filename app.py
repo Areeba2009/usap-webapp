@@ -17,16 +17,27 @@ def calculate():
     inputs = data.get('inputs', {})
     
     try:
+        # Full validation state restore mapping your exact original code parameters
         angle = float(inputs.get('angle', 0))
-        radius = float(inputs.get('radius', 0))
-        unit = inputs.get('final_unit', 'm')
-        
-        # Mirroring your original multi-conditional geometric overrides
         if angle == 0 and inputs.get('has_other_arc') == 'yes':
             angle = 360 - float(inputs.get('other_arc_angle', 0))
-            
-        if radius == 0 and inputs.get('is_circ_given_rad') == 'yes':
-            radius = float(inputs.get('radius_circumference', 0)) / (2 * PI_VAL)
+        elif angle == 0 and inputs.get('fallback_arc_length'):
+            arc_fallback = float(inputs.get('fallback_arc_length', 0))
+            if inputs.get('is_radius_given') == 'yes':
+                r_fallback = float(inputs.get('fallback_radius', 1))
+                angle = (arc_fallback * 360) / (2 * PI_VAL * r_fallback)
+            elif inputs.get('is_circumference_given') == 'yes':
+                r_fallback = float(inputs.get('fallback_circumference', 0)) / (2 * PI_VAL)
+                angle = (arc_fallback * 360) / (2 * PI_VAL * r_fallback)
+
+        radius = float(inputs.get('radius', 0))
+        if radius == 0:
+            if inputs.get('is_circ_given_rad') == 'yes':
+                radius = float(inputs.get('radius_circumference', 0)) / (2 * PI_VAL)
+            elif inputs.get('is_circ_given_rad') == 'no':
+                radius = (float(inputs.get('radius_arc_length', 0)) * 360) / (angle * 2 * PI_VAL)
+
+        unit = inputs.get('final_unit', 'm')
 
         if "arc length" in calc_type:
             ans = math.radians(angle) * radius
@@ -36,6 +47,16 @@ def calculate():
             ans = (2 * radius) + arc_len
             output_text = f"Perimeter of Sector: {round(ans, 3)} {unit}\nHappy Calculating!"
         else:
+            if angle == 0 and inputs.get('is_arc_given_area') == 'yes':
+                arc_area = float(inputs.get('area_arc_length', 0))
+                r_area = float(inputs.get('area_radius_fallback', 1)) if inputs.get('is_rad_given_area') == 'yes' else (float(inputs.get('area_circ_fallback', 0)) / (2 * PI_VAL))
+                angle = (arc_area * 360) / (2 * PI_VAL * r_area)
+            elif angle == 0 and inputs.get('is_other_sector_angle_given') == 'yes':
+                angle = 360 - float(inputs.get('other_sector_angle', 0))
+
+            if radius == 0 and inputs.get('is_circ_given_area_rad') == 'yes':
+                radius = float(inputs.get('area_radius_circ', 0)) / (2 * PI_VAL)
+
             ans = (angle / 360.0) * PI_VAL * (radius ** 2)
             output_text = f"Area of Sector: {round(ans, 3)} {unit}²"
 
@@ -55,7 +76,6 @@ def stability_check():
     lat = float(data.get('lat', 31.5204))
     lng = float(data.get('lng', 74.3587))
     
-    # Real Open-Meteo & Topography Simulator matching Lahore Core Bounding Box
     elevation = round(random.uniform(206.5, 214.2), 1)
     moisture = round(random.uniform(18.0, 72.0), 1)
     slope = round(random.uniform(0.4, 7.2), 1)
@@ -65,8 +85,8 @@ def stability_check():
     
     factors = []
     if slope >= 5.0: factors.append(f"Unstable Terrain Slope Gradient ({slope}°)")
-    if moisture > 65.0: factors.append(f"High Water Table/Soil Saturation Risk ({moisture}%)")
-    if moisture < 25.0: factors.append(f"Loose/Arid Granular Base Soil Texture ({moisture}%)")
+    if moisture > 65.0: factors.append(f"High Water Table Risk ({moisture}%)")
+    if moisture < 25.0: factors.append(f"Loose Granular Sand Base ({moisture}%)")
     
     verdict_text = "LAND BUILDABLE" if is_buildable else "LAND NON-BUILDABLE"
     justification = "Geotechnical matrix profile meets all stable infrastructure safety bounds." if is_buildable else f"Structural Constraints Detected: {', '.join(factors)}"
@@ -81,4 +101,3 @@ def stability_check():
     })
 
 app = app
-
