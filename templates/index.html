@@ -33,45 +33,48 @@
         .window-panel { display: none; }
         .window-panel.active { display: block; }
 
-        /* Home View Styles */
+        /* Home View Styles - Fixed secure visual CDN paths */
         .home-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; min-height: 500px; }
         .home-hero h1 {
             font-family: 'Anton', sans-serif; font-size: 5.5rem; color: var(--text-accent);
             text-transform: uppercase; margin: 0; letter-spacing: 2px; line-height: 1.1; text-shadow: 4px 4px 0px #000000;
         }
         .staggered-showcase { display: flex; gap: 20px; align-items: flex-end; justify-content: right; height: 420px; }
-        .staggered-card { width: 150px; border-radius: 8px; overflow: hidden; border: 3px solid var(--calc-border); box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
-        .staggered-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .staggered-card { width: 150px; border-radius: 8px; overflow: hidden; border: 3px solid var(--calc-border); box-shadow: 0 15px 35px rgba(0,0,0,0.8); background: #1a2318; }
+        .staggered-card svg, .staggered-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .card-1 { height: 260px; } .card-2 { height: 350px; } .card-3 { height: 300px; }
 
-        /* Calculator Section */
+        /* Restoring full original prompt device spacing configuration */
         .grid-calculator { display: grid; grid-template-columns: 430px 1fr; gap: 40px; align-items: start; }
         .calc-device { background-color: var(--calc-base); border: 6px solid var(--calc-border); border-radius: 24px; padding: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
         .pill-label { background: var(--calc-border); color: var(--text-accent); font-family: 'Anton', sans-serif; text-transform: uppercase; padding: 6px 20px; border-radius: 4px; font-size: 14px; display: inline-block; }
         
-        .calc-field-row { display: flex; flex-direction: column; gap: 8px; margin: 15px 0; }
-        .calc-field-row label { font-family: 'Anton', sans-serif; color: var(--bg-deep); font-size: 14px; text-transform: uppercase; }
-        .calc-input-box { background: var(--calc-border); border: 2px solid #2d3629; color: var(--text-accent); font-family: 'Anton', sans-serif; font-size: 20px; padding: 10px; border-radius: 6px; width: 100%; box-sizing: border-box; outline: none; }
-        
-        .calc-interior-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .calc-row-toggles { display: flex; gap: 8px; margin: 15px 0 5px 0; align-items: center; }
+        .toggle-btn { background: var(--calc-border); border: none; color: var(--text-accent); font-family: 'Anton', sans-serif; padding: 6px 14px; border-radius: 4px; font-size: 12px; cursor: pointer; transition: 0.2s; }
+        .toggle-btn.active, .toggle-btn:active { background: #24301f; color: #fff; border: 1px solid #fff; }
+
+        .calc-interior-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 15px; margin-bottom: 15px; margin-top: 15px; }
         .keypad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .btn-key { background-color: var(--calc-border); border: none; color: var(--text-accent); font-family: 'Anton', sans-serif; font-size: 20px; padding: 12px 0; border-radius: 6px; cursor: pointer; text-align: center; box-shadow: 0 4px #263021; }
         .btn-key:active { transform: scale(0.95); box-shadow: none; }
+        
         .mode-sidebar { display: flex; flex-direction: column; gap: 8px; }
         .btn-mode { background-color: var(--calc-border); border: 2px solid transparent; color: var(--text-accent); padding: 10px; font-family: 'Anton', sans-serif; font-size: 14px; text-transform: uppercase; cursor: pointer; border-radius: 4px; text-align: center; }
         .btn-mode.active { background-color: #24301f; border-color: #ffffff; color: #fff; }
         .btn-enter { width: 100%; background: #23301e; border: 2px solid var(--calc-border); color: #fff; padding: 14px 0; font-family: 'Anton', sans-serif; font-size: 20px; border-radius: 6px; cursor: pointer; text-transform: uppercase; }
+        
         .unit-matrix-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-        .btn-unit { background: var(--calc-border); border: none; color: var(--text-accent); padding: 8px 0; font-size: 12px; font-family: 'Anton', sans-serif; cursor: pointer; border-radius: 4px; }
+        .btn-unit { background: var(--calc-border); border: none; color: var(--text-accent); padding: 8px 0; font-size: 12px; font-family: 'Anton', sans-serif; cursor: pointer; border-radius: 4px; text-align: center; }
         .btn-unit.active { background: #fff; color: #000; }
 
-        /* Console Terminal Display styles */
-        .terminal-display { background: #e9ece6; color: #000000; font-family: 'Courier Prime', monospace; font-weight: bold; padding: 25px; border-radius: 12px; min-height: 200px; font-size: 15px; white-space: pre-wrap; line-height: 1.4; border: 1px solid rgba(0,0,0,0.1); box-shadow: inset 0 0 10px rgba(0,0,0,0.2); }
+        .terminal-display { background: #e9ece6; color: #000000; font-family: 'Courier Prime', monospace; font-weight: bold; padding: 25px; border-radius: 12px; min-height: 250px; font-size: 15px; white-space: pre-wrap; line-height: 1.4; border: 1px solid rgba(0,0,0,0.1); box-shadow: inset 0 0 10px rgba(0,0,0,0.2); }
+        .interactive-entry-bar { display: flex; background: #ffffff; border-radius: 6px; padding: 12px; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); margin-top: 15px; }
+        .interactive-entry-bar span { color: #000; font-weight: bold; margin-right: 10px; font-family: monospace; }
+        .interactive-entry-bar input { background: transparent; border: none; outline: none; width: 100%; color: #000; font-family: monospace; font-size: 16px; }
         .canvas-container { background: #111610; border: 3px solid var(--calc-border); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .canvas-title { font-family: 'Anton', sans-serif; color: var(--text-accent); text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px; font-size: 16px; }
         canvas { background: #070a06; border: 1px dashed var(--calc-border); border-radius: 6px; }
 
-        /* Visualization Panel */
         .vis-form-split { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .control-box { background: var(--top-panel); padding: 25px; border-radius: 12px; border: 1px solid var(--calc-border); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .input-row { margin-bottom: 15px; }
@@ -80,9 +83,8 @@
         .pin-list-box { background: rgba(0,0,0,0.4); border: 1px solid var(--calc-border); padding: 12px; border-radius: 6px; max-height: 120px; overflow-y: auto; margin-top: 10px; font-family: monospace; font-size: 13px; }
         .btn-add-pin { background: var(--text-accent); color: var(--bg-deep); font-family: 'Anton', sans-serif; border: none; padding: 10px; width: 100%; border-radius: 6px; cursor: pointer; margin-top: 5px; text-transform: uppercase; }
 
-        /* Map Section Layout */
         .map-analysis-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; }
-        .lahore-map-fallback { background-image: linear-gradient(rgba(11,22,10,0.5), rgba(11,22,10,0.5)), url('https://unsplash.com'); background-size: cover; border: 3px solid var(--calc-border); border-radius: 16px; height: 480px; position: relative; overflow: hidden; cursor: crosshair; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+        .lahore-map-fallback { background-image: linear-gradient(rgba(11,22,10,0.4), rgba(11,22,10,0.4)), url('https://unsplash.com'); background-size: cover; border: 3px solid var(--calc-border); border-radius: 16px; height: 480px; position: relative; overflow: hidden; cursor: crosshair; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
         .grid-line { position: absolute; background: rgba(197,183,157,0.15); }
         .stability-readout { background: var(--top-panel); padding: 25px; border-radius: 12px; border: 1px solid var(--calc-border); }
         .metric-badge { display: flex; justify-content: space-between; padding: 12px; background: var(--bg-deep); margin-bottom: 10px; border-radius: 6px; border-left: 4px solid var(--text-accent); font-family: monospace; font-size: 14px; }
@@ -112,14 +114,31 @@
                     <h1>Urban Space<br>Sector Area<br>Planner</h1>
                 </div>
                 <div class="staggered-showcase">
-                    <div class="staggered-card card-1"><img src="https://unsplash.com" alt="Grid Zone"></div>
-                    <div class="staggered-card card-2"><img src="https://unsplash.com" alt="Topology"></div>
-                    <div class="staggered-card card-3"><img src="https://unsplash.com" alt="Structure"></div>
+                    <div class="staggered-card card-1">
+                        <svg viewBox="0 0 100 150" fill="none" xmlns="http://w3.org">
+                            <rect width="100" height="150" fill="#1b2419"/>
+                            <circle cx="50" cy="75" r="30" stroke="#c5b79d" stroke-width="1" stroke-dasharray="2 2"/>
+                            <line x1="10" y1="75" x2="90" y2="75" stroke="#394433" stroke-width="1"/>
+                            <line x1="50" y1="10" x2="50" y2="140" stroke="#394433" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <div class="staggered-card card-2">
+                        <svg viewBox="0 0 100 150" fill="none" xmlns="http://w3.org">
+                            <rect width="100" height="150" fill="#24301f"/>
+                            <path d="M10 130 Q 30 50, 50 90 T 90 20" stroke="#c5b79d" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <div class="staggered-card card-3">
+                        <svg viewBox="0 0 100 150" fill="none" xmlns="http://w3.org">
+                            <rect width="100" height="150" fill="#151d14"/>
+                            <path d="M50 75 L 80 110 A 40 40 0 0 1 20 100 Z" fill="rgba(197,183,157,0.2)" stroke="#c5b79d"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- MODULE 2: CALCULATOR WINDOW -->
+        <!-- MODULE 2: CALCULATOR TERMINAL VIEW -->
         <div id="view-calc" class="window-panel">
             <div class="grid-calculator">
                 <div class="calc-device">
@@ -128,58 +147,64 @@
                         <span style="color:#fff; font-family:'Anton', sans-serif; font-size:12px; cursor:pointer;" onclick="clearSystemConsole()">RESET</span>
                     </div>
                     
-                    <div class="calc-field-row">
-                        <label>Sector Internal Angle (Degrees)</label>
-                        <input type="text" id="calc-angle-input" class="calc-input-box" value="45" onclick="setActiveInput('calc-angle-input')">
-                    </div>
-                    <div class="calc-field-row">
-                        <label>Framework Radius Matrix</label>
-                        <input type="text" id="calc-radius-input" class="calc-input-box" value="120" onclick="setActiveInput('calc-radius-input')">
+                    <div class="calc-row-toggles">
+                        <button class="toggle-btn active" id="t-on" onclick="handlePhysicalToggle('on')">ON</button>
+                        <button class="toggle-btn" id="t-off" onclick="handlePhysicalToggle('off')">OFF</button>
+                        <button class="toggle-btn" style="margin-left:auto;" id="t-yes" onclick="handleOperatorClick('yes')">YES</button>
+                        <button class="toggle-btn" id="t-no" onclick="handleOperatorClick('no')">NO</button>
                     </div>
 
                     <div class="calc-interior-grid">
                         <div class="keypad-grid">
-                            <button class="btn-key" onclick="pressNumber('1')">1</button>
-                            <button class="btn-key" onclick="pressNumber('2')">2</button>
-                            <button class="btn-key" onclick="pressNumber('3')">3</button>
-                            <button class="btn-key" onclick="pressNumber('4')">4</button>
-                            <button class="btn-key" onclick="pressNumber('5')">5</button>
-                            <button class="btn-key" onclick="pressNumber('6')">6</button>
-                            <button class="btn-key" onclick="pressNumber('7')">7</button>
-                            <button class="btn-key" onclick="pressNumber('8')">8</button>
-                            <button class="btn-key" onclick="pressNumber('9')">9</button>
-                            <button class="btn-key" onclick="pressNumber('0')">0</button>
-                            <button class="btn-key" onclick="pressNumber('.')">.</button>
-                            <button class="btn-key" style="background:#4a2222; box-shadow:0 4px #2a1212;" onclick="backspaceActiveField()">⌫</button>
+                            <button class="btn-key" onclick="appendKeypad('1')">1</button>
+                            <button class="btn-key" onclick="appendKeypad('2')">2</button>
+                            <button class="btn-key" onclick="appendKeypad('3')">3</button>
+                            <button class="btn-key" onclick="appendKeypad('4')">4</button>
+                            <button class="btn-key" onclick="appendKeypad('5')">5</button>
+                            <button class="btn-key" onclick="appendKeypad('6')">6</button>
+                            <button class="btn-key" onclick="appendKeypad('7')">7</button>
+                            <button class="btn-key" onclick="appendKeypad('8')">8</button>
+                            <button class="btn-key" onclick="appendKeypad('9')">9</button>
+                            <button class="btn-key" onclick="appendKeypad('0')">0</button>
+                            <button class="btn-key" onclick="appendKeypad('.')">.</button>
+                            <button class="btn-key" style="background:#4a2222; box-shadow:0 4px #2a1212;" onclick="backspaceConsoleField()">⌫</button>
                         </div>
                         <div class="mode-sidebar">
-                            <button class="btn-mode active" id="m-arc" onclick="setTargetCalculationMode('Arc Length')">Arc Length</button>
-                            <button class="btn-mode" id="m-area" onclick="setTargetCalculationMode('Area of Sector')">Area Sector</button>
-                            <button class="btn-mode" id="m-perim" onclick="setTargetCalculationMode('Perimeter')">Perimeter</button>
-                            <button class="btn-enter" onclick="dispatchEngineCompute()">RUN</button>
+                            <button class="btn-mode active" id="m-arc" onclick="changeEngineMode('Arc Length')">Arc Length</button>
+                            <button class="btn-mode" id="m-area" onclick="changeEngineMode('Area of Sector')">Area Sector</button>
+                            <button class="btn-mode" id="m-perim" onclick="changeEngineMode('Perimeter of Sector')">Perimeter</button>
+                            <button class="btn-enter" onclick="executeTerminalPrompt()">ENTER</button>
                         </div>
                     </div>
 
                     <div class="unit-matrix-grid">
-                        <button class="btn-unit active" id="u-m" onclick="setTargetUnitScale('m')">m</button>
-                        <button class="btn-unit" id="u-km" onclick="setTargetUnitScale('km')">km</button>
-                        <button class="btn-unit" id="u-ft" onclick="setTargetUnitScale('ft')">ft</button>
-                        <button class="btn-unit" id="u-mi" onclick="setTargetUnitScale('mi')">mi</button>
+                        <button class="btn-unit active" id="u-m" onclick="setUnitScale('m')">m</button>
+                        <button class="btn-unit" id="u-km" onclick="setUnitScale('km')">km</button>
+                        <button class="btn-unit" id="u-cm" onclick="setUnitScale('cm')">cm</button>
+                        <button class="btn-unit" id="u-mm" onclick="setUnitScale('mm')">mm</button>
+                        <button class="btn-unit" id="u-mi" onclick="setUnitScale('mi')">mi</button>
+                        <button class="btn-unit" id="u-ft" onclick="setUnitScale('ft')">ft</button>
+                        <button class="btn-unit" id="u-yd" onclick="setUnitScale('yd')">yd</button>
+                        <button class="btn-unit" id="u-in" onclick="setUnitScale('in')">in</button>
                     </div>
                 </div>
 
                 <div class="terminal-container">
                     <div class="terminal-display" id="console-monitor">Urban Space & Sector Area Planner (USAP) Ready.
-Adjust values on left input panels and hit RUN to evaluate spatial matrices.</div>
+Select execution target matrix on left device panel to initialize operations...</div>
+                    <div class="interactive-entry-bar">
+                        <span>&gt;</span>
+                        <input type="text" id="console-field" placeholder="Type data stream or click keypad numbers...">
+                    </div>
                     <div class="canvas-container">
                         <span class="canvas-title">Concentric Structural Infrastructure Matrix Graph</span>
-                        <canvas id="calcCanvas" width="460" height="340"></canvas>
+                        <canvas id="calcCanvas" width="460" height="260"></canvas>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- MODULE 3: VISUALIZATION MODULE WINDOW -->
+        <!-- MODULE 3: VISUALIZATION INTERFACE -->
         <div id="view-vis" class="window-panel">
             <div class="vis-form-split">
                 <div class="control-box">
@@ -205,10 +230,10 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
                     <div style="border-top:1px solid var(--calc-border); padding-top:15px; margin-top:15px;">
                         <span style="font-family:'Anton', sans-serif; font-size:13px; color:var(--text-accent); text-transform:uppercase; display:block; margin-bottom:10px;">Add Project Infrastructure Pins</span>
                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
-                            <input type="number" id="pin-x" placeholder="X Coordinate" value="40">
-                            <input type="number" id="pin-y" placeholder="Y Coordinate" value="50">
+                            <input type="number" id="pin-x" placeholder="X" value="40">
+                            <input type="number" id="pin-y" placeholder="Y" value="50">
                         </div>
-                        <input type="text" id="pin-label" placeholder="Pin Identifier Label (e.g. Center Hub)" value="Residential Point" style="padding:10px; background:var(--bg-deep); border:1px solid var(--calc-border); color:#fff; border-radius:6px; width:100%; box-sizing:border-box; margin-bottom:8px;">
+                        <input type="text" id="pin-label" placeholder="Pin Identifier Label" value="Residential Point" style="padding:10px; background:var(--bg-deep); border:1px solid var(--calc-border); color:#fff; border-radius:6px; width:100%; box-sizing:border-box; margin-bottom:8px;">
                         <button type="button" class="btn-add-pin" onclick="registerNewMapPin()">Plot Infrastructure Asset</button>
                     </div>
                     <div class="pin-list-box" id="pin-list-display">Active Pins Array: None</div>
@@ -220,7 +245,7 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
             </div>
         </div>
 
-                <!-- MODULE 4: GEOLOCATION ANALYSIS MAP WINDOW -->
+        <!-- MODULE 4: GEOLOCATION ANALYSIS MAP -->
         <div id="view-land" class="window-panel">
             <div class="map-analysis-layout">
                 <div class="lahore-map-fallback" id="lahore-map" onclick="dispatchMapStabilityQuery(event)">
@@ -234,7 +259,6 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
                     <div class="metric-badge"><span>Subsoil Moisture Saturation:</span><span id="lbl-moist">--</span></div>
                     <div class="metric-badge"><span>Topography Slope Gradient:</span><span id="lbl-slope">--</span></div>
                     <div class="metric-badge"><span>Atmospheric Humidity Index:</span><span id="lbl-humid">--</span></div>
-                    
                     <div id="verdict-display" style="display:none;" class="verdict-box">LAND REGION REGISTERED</div>
                     <p id="lbl-justification" style="font-size:14px; line-height:1.4; color:#cbd5e1; margin-top:15px; font-family:sans-serif;"></p>
                 </div>
@@ -245,9 +269,11 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
     <script>
         let currentMode = 'Arc Length';
         let targetUnit = 'm';
-        let activeInputFieldId = 'calc-angle-input';
-        let collectedParams = { angle: '45', radius: '120', final_unit: 'm' };
+        let stepIndex = 0;
+        let collectedParams = { final_unit: 'm' };
+        let submittalSequence = [];
         let registeredPinsArray = [];
+        let isSystemOn = true;
 
         function toggleView(viewKey) {
             document.querySelectorAll('.window-panel').forEach(p => p.classList.remove('active'));
@@ -255,90 +281,149 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
             document.getElementById(`view-${viewKey}`).classList.add('active');
             document.getElementById(`tab-${viewKey}`).classList.add('active');
             
-            // Re-render canvas matrices on view initialization bounds
             if(viewKey === 'vis') setTimeout(renderVisualizationGraphics, 50);
-            if(viewKey === 'calc') setTimeout(() => drawConcentricRadarGraph(120, 45, 'm'), 50);
+            if(viewKey === 'calc') setTimeout(() => drawConcentricRadarGraph(120, 45, targetUnit), 50);
         }
 
-        function setActiveInput(fieldId) {
-            activeInputFieldId = fieldId;
-            document.querySelectorAll('.calc-input-box').forEach(b => b.style.borderColor = 'transparent');
-            const targetEl = document.getElementById(fieldId);
-            if(targetEl) targetEl.style.borderColor = 'var(--text-accent)';
-        }
-
-        function pressNumber(numStr) {
-            const inputField = document.getElementById(activeInputFieldId);
-            if(!inputField) return;
-            if(inputField.value === '0') inputField.value = '';
-            inputField.value += numStr;
+        function handlePhysicalToggle(state) {
+            isSystemOn = (state === 'on');
+            document.getElementById('t-on').classList.toggle('active', isSystemOn);
+            document.getElementById('t-off').classList.toggle('active', !isSystemOn);
             
-            // Synchronize active variables collection
-            let paramKey = (activeInputFieldId === 'calc-angle-input') ? 'angle' : 'radius';
-            collectedParams[paramKey] = inputField.value;
+            let monitor = document.getElementById('console-monitor');
+            if(!isSystemOn) {
+                monitor.innerText = "[SYSTEM SHUTDOWN]\nTerminal power line decoupled.";
+                monitor.style.background = "#1a1f18"; monitor.style.color = "#4a5a43";
+            } else {
+                monitor.style.background = "#e9ece6"; monitor.style.color = "#000000";
+                changeEngineMode(currentMode);
+            }
         }
 
-        function backspaceActiveField() {
-            const inputField = document.getElementById(activeInputFieldId);
-            if(!inputField) return;
-            inputField.value = inputField.value.slice(0, -1);
-            if(inputField.value === '') inputField.value = '0';
-            
-            let paramKey = (activeInputFieldId === 'calc-angle-input') ? 'angle' : 'radius';
-            collectedParams[paramKey] = inputField.value;
+        function appendKeypad(val) {
+            if(!isSystemOn) return;
+            document.getElementById('console-field').value += val;
         }
 
-        function setTargetCalculationMode(modeLabel) {
-            currentMode = modeLabel;
-            document.querySelectorAll('.btn-mode').forEach(b => b.classList.remove('active'));
-            if(modeLabel === 'Arc Length') document.getElementById('m-arc').classList.add('active');
-            if(modeLabel === 'Area of Sector') document.getElementById('m-area').classList.add('active');
-            if(modeLabel === 'Perimeter') document.getElementById('m-perim').classList.add('active');
+        function backspaceConsoleField() {
+            if(!isSystemOn) return;
+            let f = document.getElementById('console-field');
+            f.value = f.value.slice(0, -1);
         }
 
-        function setTargetUnitScale(unitStr) {
+        function setUnitScale(unitStr) {
+            if(!isSystemOn) return;
             targetUnit = unitStr;
             collectedParams['final_unit'] = unitStr;
             document.querySelectorAll('.btn-unit').forEach(b => b.classList.remove('active'));
-            if(unitStr === 'm') document.getElementById('u-m').classList.add('active');
-            if(unitStr === 'km') document.getElementById('u-km').classList.add('active');
-            if(unitStr === 'ft') document.getElementById('u-ft').classList.add('active');
-            if(unitStr === 'mi') document.getElementById('u-mi').classList.add('active');
+            document.getElementById(`u-${unitStr}`).classList.add('active');
+            renderTerminalPromptView();
         }
 
-        function clearSystemConsole() {
-            document.getElementById('calc-angle-input').value = '45';
-            document.getElementById('calc-radius-input').value = '120';
-            collectedParams = { angle: '45', radius: '120', final_unit: targetUnit };
-            document.getElementById('console-monitor').innerText = "System matrices reset to initial structural bounds.";
-            drawConcentricRadarGraph(120, 45, targetUnit);
+        function changeEngineMode(modeStr) {
+            if(!isSystemOn) return;
+            currentMode = modeStr;
+            document.querySelectorAll('.btn-mode').forEach(b => b.classList.remove('active'));
+            if(modeStr === 'Arc Length') document.getElementById('m-arc').classList.add('active');
+            if(modeStr === 'Area of Sector') document.getElementById('m-area').classList.add('active');
+            if(modeStr === 'Perimeter of Sector') document.getElementById('m-perim').classList.add('active');
+            initializeFlowSequence(modeStr);
         }
 
-        function dispatchEngineCompute() {
-            let monitor = document.getElementById('console-monitor');
-            if(monitor) monitor.innerText = "USAP Core >> Initiating pipeline computation subroutines...\nProcessing parameter variables array.";
+        function initializeFlowSequence(mode) {
+            collectedParams = { final_unit: targetUnit }; stepIndex = 0;
+            if(mode === 'Arc Length') {
+                submittalSequence = [
+                    { label: "Given Sector Internal Angle (Input 0 if calculation fallback needed):", key: "angle" },
+                    { label: "Is the complementary outer sector arc angle given? (yes/no):", key: "has_other_arc", skipCheck: (p) => p.angle != 0 },
+                    { label: "Input complementary structural arc angle parameter value:", key: "other_arc_angle", skipCheck: (p) => p.has_other_arc !== 'yes' },
+                    { label: "Input known fallback arc length dimensions:", key: "fallback_arc_length", skipCheck: (p) => p.has_other_arc !== 'no' },
+                    { label: "Is the core radius dimension metrics verified? (yes/no):", key: "is_radius_given", skipCheck: (p) => !p.fallback_arc_length || p.fallback_arc_length <= 0 },
+                    { label: "Input design framework radius dimensions:", key: "fallback_radius", skipCheck: (p) => p.is_radius_given !== 'yes' },
+                    { label: "Is structural circle circumference values available? (yes/no):", key: "is_circumference_given", skipCheck: (p) => p.is_radius_given !== 'no' },
+                    { label: "Input known baseline circumference dimensions:", key: "fallback_circumference", skipCheck: (p) => p.is_circumference_given !== 'yes' },
+                    { label: "Input structural design framework radius value (Input 0 if unknown):", key: "radius" },
+                    { label: "Is system total circle circumference baseline available? (yes/no):", key: "is_circ_given_rad", skipCheck: (p) => p.radius != 0 },
+                    { label: "Input layout target framework circumference matrix values:", key: "radius_circumference", skipCheck: (p) => p.is_circ_given_rad !== 'yes' },
+                    { label: "Input tracking relative arc length index dimensions:", key: "radius_arc_length", skipCheck: (p) => p.is_circ_given_rad !== 'no' }
+                ];
+            } else if (mode === 'Perimeter of Sector') {
+                submittalSequence = [
+                    { label: "Input primary layout framework radius value (Input 0 if unknown):", key: "radius" },
+                    { label: "Is configuration track circle circumference metrics verified? (yes/no):", key: "is_circ_given_perim", skipCheck: (p) => p.radius != 0 },
+                    { label: "Input framework circle circumference data streams:", key: "perim_circumference", skipCheck: (p) => p.is_circ_given_perim !== 'yes' },
+                    { label: "Input project target zone arc length metrics (Input 0 if unknown):", key: "arc_length" },
+                    { label: "Input sector configuration baseline internal angle:", key: "angle", skipCheck: (p) => p.arc_length != 0 }
+                ];
+            } else {
+                submittalSequence = [
+                    { label: "Given Sector Internal Angle (Input 0 if calculation fallback needed):", key: "angle" },
+                    { label: "Is the project layout zone arc length index available? (yes/no):", key: "is_arc_given_area", skipCheck: (p) => p.angle != 0 },
+                    { label: "Input sector structural arc length parameter values:", key: "area_arc_length", strokeCheck: (p) => p.is_arc_given_area !== 'yes' },
+                    { label: "Is the framework zone core radius metric verified? (yes/no):", key: "is_rad_given_area", skipCheck: (p) => p.is_arc_given_area !== 'yes' },
+                    { label: "Input design framework radius dimensions:", key: "area_radius_fallback", skipCheck: (p) => p.is_rad_given_area !== 'yes' },
+                    { label: "Input layout target framework circumference matrix values:", key: "area_circ_fallback", skipCheck: (p) => p.is_rad_given_area !== 'no' },
+                    { label: "Is structural configuration complementary sector angle available? (yes/no):", key: "is_other_sector_angle_given", skipCheck: (p) => p.is_arc_given_area !== 'no' },
+                    { label: "Input tracking alternative complementary layout sector angle:", key: "other_sector_angle", skipCheck: (p) => p.is_other_sector_angle_given !== 'yes' },
+                    { label: "Input design framework radius value (Input 0 if unknown):", key: "radius" },
+                    { label: "Is system total circle circumference baseline available? (yes/no):", key: "is_circ_given_area_rad", skipCheck: (p) => p.radius != 0 },
+                    { label: "Input allocation layout framework circumference dimensions:", key: "area_radius_circ", skipCheck: (p) => p.is_circ_given_area_rad !== 'yes' }
+                ];
+            }
+            renderTerminalPromptView();
+        }
 
-            let angleVal = parseFloat(collectedParams['angle']) || 45;
-            let radiusVal = parseFloat(collectedParams['radius']) || 120;
+        function renderTerminalPromptView() {
+            let logFeed = `Urban Space & Sector Area Planner (USAP)\nActive Module Core: ${currentMode}\n------------------------------------------\n`;
+            for(let key in collectedParams) {
+                if(key === 'final_unit') continue;
+                let step = submittalSequence.find(s => s.key === key);
+                if(step) logFeed += `${step.label} ${collectedParams[key]}\n`;
+            }
+            while(stepIndex < submittalSequence.length && submittalSequence[stepIndex].skipCheck && submittalSequence[stepIndex].skipCheck(collectedParams)) {
+                stepIndex++;
+            }
+            if(stepIndex < submittalSequence.length) {
+                logFeed += `\n>> ${submittalSequence[stepIndex].label}`;
+            } else {
+                logFeed += `\n[Data parameters processing stream full. Press ENTER to execute core calculations]`;
+            }
+            document.getElementById('console-monitor').innerText = logFeed;
+        }
 
-            fetch('/calculate', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ calc_type: currentMode, inputs: collectedParams })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(!monitor) return;
-                if(data.error) {
-                    monitor.innerText = "[CRITICAL SYSTEM FAULT]:\n" + data.error;
-                } else {
-                    monitor.innerText = "Urban Space & Sector Area Planner (USAP)\nActive Module: " + currentMode + "\n------------------------------------------\n\nExecution Stream Output:\n" + data.result;
-                    drawConcentricRadarGraph(data.radius || radiusVal, data.angle || angleVal, data.unit || targetUnit);
-                }
-            })
-            .catch(err => {
-                if(monitor) monitor.innerText += "\n\n[Network Exception]: Server route timeout. Please deploy updates via Vercel command logs.";
-            });
+        function handleOperatorClick(opValue) {
+            if(!isSystemOn) return;
+            document.getElementById('console-field').value = opValue;
+            executeTerminalPrompt();
+        }
+
+        function executeTerminalPrompt() {
+            if(!isSystemOn) return;
+            let entryField = document.getElementById('console-field');
+            let dataStr = entryField.value.trim();
+            entryField.value = '';
+
+            if(stepIndex >= submittalSequence.length) {
+                fetch('/calculate', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ calc_type: currentMode, inputs: collectedParams })
+                })
+                .then(r => r.json())
+                .then(d => {
+                    let display = document.getElementById('console-monitor');
+                    if(d.error) { display.innerText += `\n\n[CRITICAL ERROR]: ${d.error}`; }
+                    else {
+                        display.innerText += `\n\n========================================\nExecution Stream Output:\n${d.result}\n========================================`;
+                        drawConcentricRadarGraph(d.radius || 120, d.angle || 45, targetUnit);
+                    }
+                });
+                return;
+            }
+            if(!dataStr) return;
+            collectedParams[submittalSequence[stepIndex].key] = dataStr;
+            stepIndex++;
+                        renderTerminalPromptView();
         }
 
         function drawConcentricRadarGraph(radius, angle, unit) {
@@ -348,30 +433,26 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             let cx = canvas.width / 2;
-            let cy = canvas.height / 2 + 20;
-            let maxGraphRadius = 120;
+            let cy = canvas.height / 2 + 10;
+            let maxGraphRadius = 100;
 
-            // Draw high-definition target tracking guide grid lines
             ctx.strokeStyle = 'rgba(112, 122, 98, 0.25)';
             ctx.lineWidth = 1;
-            ctx.setLineDash([4, 4]);
             
-            // Nested Concentric rings system allocation layout matching requested reference image
-            let ringMetrics = [0.25, 0.5, 0.75, 1.0];
-            ringMetrics.forEach(scale => {
+            // Nested concentric circle matrix framework matching your pitch reference precisely
+            [0.25, 0.5, 0.75, 1.0].forEach(scale => {
                 ctx.beginPath();
                 ctx.arc(cx, cy, maxGraphRadius * scale, 0, 2 * Math.PI);
                 ctx.stroke();
             });
 
-            // Drawing major linear radial axes corridors
+            // Grid coordinate guide axes alignment rules
             ctx.beginPath();
-            ctx.moveTo(cx - 150, cy); ctx.lineTo(cx + 150, cy);
-            ctx.moveTo(cx, cy - 150); ctx.lineTo(cx, cy + 150);
+            ctx.moveTo(cx - 130, cy); ctx.lineTo(cx + 130, cy);
+            ctx.moveTo(cx, cy - 120); ctx.lineTo(cx, cy + 120);
             ctx.stroke();
-            ctx.setLineDash([]);
 
-            // Draw project infrastructure active bounds sector area shading overlay
+            // Shading infrastructure active sector polygon metrics overlay
             let angleRad = (angle * Math.PI) / 180;
             ctx.fillStyle = 'rgba(197, 183, 157, 0.25)';
             ctx.strokeStyle = 'var(--text-accent)';
@@ -385,17 +466,14 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
             ctx.fill();
             ctx.stroke();
 
-            // Render descriptive coordinate map baseline typography array layers
+            // Descriptive matrix data labels
             ctx.fillStyle = 'rgba(112, 122, 98, 0.8)';
             ctx.font = 'bold 10px monospace';
-            ctx.fillText(`Core Bounds (${(radius * 0.3).toFixed(1)} ${unit})`, cx + 35, cy - 35);
-            ctx.fillText(`Infrastructure Boundary (${radius} ${unit})`, cx + 65, cy - 125);
+            ctx.fillText(`Core Bounds (${(radius * 0.3).toFixed(1)} ${unit})`, cx + 25, cy - 25);
+            ctx.fillText(`Infrastructure Boundary (${radius} ${unit})`, cx + 45, cy - 105);
             
-            // Draw baseline center asset placeholder hub coordinates pin vector indicator node
             ctx.fillStyle = '#ff4444';
-            ctx.beginPath();
-            ctx.arc(cx, cy, 5, 0, 2 * Math.PI);
-            ctx.fill();
+            ctx.beginPath(); ctx.arc(cx, cy, 5, 0, 2 * Math.PI); ctx.fill();
         }
 
         function toggleVisInputs() {
@@ -410,13 +488,9 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
             let py = parseFloat(document.getElementById('pin-y').value) || 0;
             let pLabel = document.getElementById('pin-label').value.trim() || "Asset Point";
 
-            // Push coordinate point definitions straight into active plot vector arrays
             registeredPinsArray.push({ x: px, y: py, label: pLabel });
-
-            // Redraw grid viewport mapping arrays
             renderVisualizationGraphics();
 
-            // Refresh text description table metrics string
             let listDisplay = document.getElementById('pin-list-display');
             if(listDisplay) {
                 listDisplay.innerHTML = "Active Pins Array:<br>" + registeredPinsArray.map((p, idx) => 
@@ -443,20 +517,17 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
             }
             let angleDeg = parseFloat(document.getElementById('vis-angle').value) || 120;
 
-            // Draw underlying targeting concentric geometric vector concentric ring tracks
             ctx.strokeStyle = 'rgba(112, 122, 98, 0.2)';
             ctx.lineWidth = 1;
             [0.25, 0.5, 0.75, 1.0].forEach(scale => {
                 ctx.beginPath(); ctx.arc(cx, cy, maxRadius * scale, 0, 2 * Math.PI); ctx.stroke();
             });
 
-            // Draw foundational boundary guidelines
             ctx.beginPath();
             ctx.moveTo(cx - 180, cy); ctx.lineTo(cx + 180, cy);
             ctx.moveTo(cx, cy - 180); ctx.lineTo(cx, cy + 180);
             ctx.stroke();
 
-            // Draw primary configuration design slice shading layer
             ctx.fillStyle = 'rgba(197, 183, 157, 0.15)';
             ctx.strokeStyle = 'var(--text-accent)';
             ctx.lineWidth = 3;
@@ -467,23 +538,19 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
             ctx.closePath();
             ctx.fill(); ctx.stroke();
 
-            // Loop and plot multiple user pins arrays onto active project geometry mapping
-            registeredPinsArray.forEach((pin, idx) => {
+            registeredPinsArray.forEach((pin) => {
                 let plotX = cx + pin.x;
-                let plotY = cy - pin.y; // Invert geometry axis mapping bounds natively
+                let plotY = cy - pin.y;
 
-                // Render vector circular indicator point markers
                 ctx.fillStyle = '#a3e635';
                 ctx.beginPath(); ctx.arc(plotX, plotY, 6, 0, 2 * Math.PI); ctx.fill();
                 ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke();
 
-                // Plot overlapping textual tags variables alignment markers
                 ctx.fillStyle = '#ffffff';
                 ctx.font = '11px sans-serif';
                 ctx.fillText(`${pin.label} (${pin.x}, ${pin.y})`, plotX + 10, plotY + 4);
             });
 
-            // Anchor point baseline infrastructure hub tracking layer
             ctx.fillStyle = '#ff4444';
             ctx.beginPath(); ctx.arc(cx, cy, 5, 0, 2 * Math.PI); ctx.fill();
         }
@@ -528,7 +595,10 @@ Adjust values on left input panels and hit RUN to evaluate spatial matrices.</di
             });
         }
 
-        // Execution alignment defaults on frame lifecycle validation hooks
+        document.getElementById('console-field').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') executeTerminalPrompt();
+        });
+
         (function constructTacticalGrid(){
             let map = document.getElementById('lahore-map');
             if(map) {
