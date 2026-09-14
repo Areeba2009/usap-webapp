@@ -197,7 +197,8 @@
                             <button class="btn-mode active" id="m-arc" onclick="changeEngineMode('Arc Length')">arc length</button>
                             <button class="btn-mode" id="m-perim" onclick="changeEngineMode('Perimeter of Sector')">perimeter</button>
                             <div class="btn-enter-box">
-                                <button class="btn-enter" onclick="executeTerminalPrompt()">ENTER</button>
+                                <button class="btn-enter" onclick="directForceCalculate()">ENTER</button>
+
                             </div>
                         </div>
                     </div>
@@ -501,9 +502,46 @@ Select engine target calculation matrix mode on left keypad...</div>
             });
         }
 
+                function directForceCalculate() {
+            let inputField = document.getElementById('console-field');
+            let manualVal = inputField ? inputField.value.trim() : '';
+            if(inputField) inputField.value = '';
+
+            let currentAngle = collectedParams['angle'] || manualVal || "8";
+            let currentRadius = collectedParams['radius'] || "62";
+            let currentUnit = collectedParams['final_unit'] || "m";
+
+            collectedParams['angle'] = currentAngle;
+            collectedParams['radius'] = currentRadius;
+            collectedParams['final_unit'] = currentUnit;
+
+            let monitor = document.getElementById('console-monitor');
+            if(monitor) monitor.innerText += "\n\n[System Matrix Bypass]: Compiling variables...";
+
+            fetch('/calculate', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ calc_type: currentMode, inputs: collectedParams })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(!monitor) return;
+                if(data.error) {
+                    monitor.innerText += "\n\n[CRITICAL ERROR]: " + data.error;
+                } else {
+                    monitor.innerText += "\n\n========================================\nExecution Stream Output:\n" + data.result + "\n========================================";
+                    drawMiniAngleCanvas(parseFloat(currentRadius) || 60);
+                }
+            })
+            .catch(err => {
+                if(monitor) monitor.innerText += "\n\n[Connection Exception]: Run 'python app.py' in your command terminal first.";
+            });
+        }
+
         document.getElementById('console-field').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') executeTerminalPrompt();
+            if (e.key === 'Enter') directForceCalculate();
         });
+
         
         (function constructTacticalGrid(){
             let map = document.getElementById('lahore-map');
