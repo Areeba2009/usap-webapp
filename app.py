@@ -17,6 +17,28 @@ def calculate():
     inputs = data.get('inputs', {})
     
     try:
+        @app.route('/calculate', methods=['POST'])
+def calculate():
+    data = request.get_json() or {}
+    calc_type = data.get('calc_type', '').lower().strip()
+    inputs = data.get('inputs', {})
+    
+    try:
+        # 🚨 INPUT VALIDATION GUARD: Catch invalid inputs instantly
+        raw_angle = float(inputs.get('angle', 0))
+        raw_other_angle = float(inputs.get('other_arc_angle', 0))
+        
+        if raw_angle > 360 or raw_other_angle > 360:
+            return jsonify({'error': "Invalid Angle: Parameters cannot exceed 360° boundary bounds."})
+            
+        if raw_angle < 0 or raw_other_angle < 0:
+            return jsonify({'error': "Invalid Parameter: Negative angles are out of structural tracking limits."})
+
+        # --- Your exact original mathematical formulas continue below untouched ---
+        angle = raw_angle
+        if angle == 0 and inputs.get('has_other_arc') == 'yes':
+            angle = 360 - raw_other_angle
+
         # Full validation state restore mapping your exact original code parameters
         angle = float(inputs.get('angle', 0))
         if angle == 0 and inputs.get('has_other_arc') == 'yes':
