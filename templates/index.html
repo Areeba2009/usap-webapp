@@ -258,7 +258,8 @@ Select execution target matrix on left device panel to initialize operations...<
                     <div style="background:var(--bg-deep); padding:15px; border-radius:6px; border:1px solid var(--calc-border); margin-bottom:15px;">
                         <span style="font-family:'Anton', sans-serif; font-size:12px; color:var(--text-accent); display:block; margin-bottom:8px; text-transform:uppercase;">Manual Coordinate Overdrive</span>
                         <input type="text" id="manual-coords-field" placeholder="e.g. 31.5204 N, 74.3587 E or 31.45, 74.25" style="width:100%; padding:10px; background:#111610; border:1px solid var(--calc-border); color:#fff; border-radius:4px; box-sizing:border-box; font-family:monospace; margin-bottom:8px;">
-                        <button type="button" class="btn-add-pin" style="margin-top:0; padding:8px;" onclick="executeKeyboardCoordinatePlot()">Plot Typed Coordinates</button>
+                        <button type="button" class="btn-add-pin" style="margin-top:0; padding:8px; background:var(--text-accent); color:var(--bg-deep); width:100%; border:none; font-family:'Anton',sans-serif; text-transform:uppercase; border-radius:4px; cursor:pointer;" onclick="executeKeyboardCoordinatePlot()">Plot Typed Coordinates</button>
+
                     </div>
                     <div class="metric-badge"><span>Surface Elevation (Open-Meteo):</span><span id="lbl-elev">--</span></div>
                     <div class="metric-badge"><span>Subsoil Moisture Saturation:</span><span id="lbl-moist">--</span></div>
