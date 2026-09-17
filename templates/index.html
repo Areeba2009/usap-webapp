@@ -255,6 +255,11 @@ Select execution target matrix on left device panel to initialize operations...<
                 <div class="stability-readout">
                     <h3 style="margin-top:0; color:var(--text-accent); font-family:'Anton', sans-serif; letter-spacing:0.5px; text-transform:uppercase;">Lahore Regional Satellite Grid Stream</h3>
                     <div class="metric-badge"><span>Target Map Coordinates:</span><span id="lbl-coord">Click target zone</span></div>
+                    <div style="background:var(--bg-deep); padding:15px; border-radius:6px; border:1px solid var(--calc-border); margin-bottom:15px;">
+                        <span style="font-family:'Anton', sans-serif; font-size:12px; color:var(--text-accent); display:block; margin-bottom:8px; text-transform:uppercase;">Manual Coordinate Overdrive</span>
+                        <input type="text" id="manual-coords-field" placeholder="e.g. 31.5204 N, 74.3587 E or 31.45, 74.25" style="width:100%; padding:10px; background:#111610; border:1px solid var(--calc-border); color:#fff; border-radius:4px; box-sizing:border-box; font-family:monospace; margin-bottom:8px;">
+                        <button type="button" class="btn-add-pin" style="margin-top:0; padding:8px;" onclick="executeKeyboardCoordinatePlot()">Plot Typed Coordinates</button>
+                    </div>
                     <div class="metric-badge"><span>Surface Elevation (Open-Meteo):</span><span id="lbl-elev">--</span></div>
                     <div class="metric-badge"><span>Subsoil Moisture Saturation:</span><span id="lbl-moist">--</span></div>
                     <div class="metric-badge"><span>Topography Slope Gradient:</span><span id="lbl-slope">--</span></div>
@@ -609,6 +614,49 @@ Select execution target matrix on left device panel to initialize operations...<
             }
             toggleView('home');
         })();
+         function executeKeyboardCoordinatePlot() {
+            let inputStr = document.getElementById('manual-coords-field').value.trim();
+            if (!inputStr) return;
+
+            try {
+                let cleanStr = inputStr.replace(/[NESWnesw,]/g, ' ').replace(/\s+/g, ' ').trim();
+                let parts = cleanStr.split(' ');
+                
+                if (parts.length < 2) {
+                    alert("Parameter Format Fault: Please input both Latitude and Longitude variables separated by a space or comma.");
+                    return;
+                }
+
+                let targetLat = parseFloat(parts[0]);
+                let targetLng = parseFloat(parts[1]);
+
+                if (isNaN(targetLat) || isNaN(targetLng)) {
+                    alert("Data Input Processing Mismatch: Unable to parse input strings into floating numerical parameters.");
+                    return;
+                }
+
+                if (targetLat < 31.35 || targetLat > 31.65 || targetLng < 74.15 || targetLng > 74.55) {
+                    alert("Out of Bounds Exception: Input tracking parameters sit outside the active Lahore Regional Matrix Grid.");
+                    return;
+                }
+
+                let mapFrame = document.getElementById('lahore-map');
+                let bbox = mapFrame.getBoundingClientRect();
+
+                let pixelY = ((31.65 - targetLat) / 0.3) * bbox.height;
+                let pixelX = ((targetLng - 74.15) / 0.4) * bbox.width;
+
+                let simulatedEvent = {
+                    clientX: bbox.left + pixelX,
+                    clientY: bbox.top + pixelY
+                };
+
+                dispatchMapStabilityQuery(simulatedEvent);
+
+            } catch (err) {
+                alert("System Matrix Exception: " + err.message);
+            }
+        }
     </script>
 </body>
 </html>
