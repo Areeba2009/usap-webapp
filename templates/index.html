@@ -267,25 +267,14 @@ Select execution target matrix on left device panel to initialize operations...<
                 <div class="stability-readout">
                     <h3 style="margin-top:0; color:var(--text-accent); font-family:'Anton', sans-serif; letter-spacing:0.5px; text-transform:uppercase;">Lahore Regional Satellite Grid Stream</h3>
                     
-                    <!-- CRITICAL ENTRY FIX: Placed inline to force rendering -->
-                    <div style="background:#0b100a; padding:15px; border-radius:6px; border:1px solid #394433; margin-top:15px; margin-bottom:15px; box-sizing:border-box;">
-                        <span style="font-family:'Anton', sans-serif; font-size:12px; color:#c5b79d; display:block; margin-bottom:8px; text-transform:uppercase;">Manual Coordinate Overdrive</span>
-                        <input type="text" id="manual-coords-field" placeholder="e.g. 31.5204, 74.3587" style="width:100%; padding:10px; background:#111610; border:1px solid #394433; color:#fff; border-radius:4px; box-sizing:border-box; font-family:monospace; margin-bottom:10px; font-size:14px; outline:none;">
-                        <button type="button" style="margin-top:0; padding:10px; background:#c5b79d; color:#0b100a; width:100%; border:none; font-family:'Anton',sans-serif; text-transform:uppercase; border-radius:4px; cursor:pointer; font-size:13px; font-weight:bold; letter-spacing:1px;" onclick="executeKeyboardCoordinatePlot()">Plot Typed Coordinates</button>
-                    </div>
+                    
 
                     <div class="metric-badge"><span>Target Map Coordinates:</span><span id="lbl-coord">Click target zone</span></div>
                     <div class="metric-badge"><span>Surface Elevation (Open-Meteo):</span><span id="lbl-elev">--</span></div>
                     <div class="metric-badge"><span>Subsoil Moisture Saturation:</span><span id="lbl-moist">--</span></div>
                     <div class="metric-badge"><span>Topography Slope Gradient:</span><span id="lbl-slope">--</span></div>
                     <div class="metric-badge"><span>Atmospheric Humidity Index:</span><span id="lbl-humid">--</span></div>
-                                        <!-- CHUNK STARTS: Placed directly at the bottom of the badge stack -->
-                    <div style="background:#0b100a; padding:15px; border-radius:6px; border:1px solid #394433; margin-top:20px; display:block !important; visibility:visible !important; position:relative !important; clear:both !important; box-sizing:border-box; width:100%;">
-                        <span style="font-family:'Anton', sans-serif; font-size:12px; color:#c5b79d; display:block; margin-bottom:8px; text-transform:uppercase;">Manual Coordinate Overdrive</span>
-                        <input type="text" id="manual-coords-field" placeholder="e.g. 31.52, 74.35" style="width:100%; padding:10px; background:#111610; border:1px solid #394433; color:#fff; border-radius:4px; box-sizing:border-box; font-family:monospace; margin-bottom:10px; font-size:14px; outline:none; display:block !important;">
-                        <button type="button" style="margin-top:0; padding:10px; background:#c5b79d; color:#0b100a; width:100%; border:none; font-family:'Anton',sans-serif; text-transform:uppercase; border-radius:4px; cursor:pointer; font-size:13px; font-weight:bold; letter-spacing:1px; display:block !important;" onclick="executeKeyboardCoordinatePlot()">Plot Typed Coordinates</button>
-                    </div>
-                    <!-- CHUNK ENDS -->
+                                       
 
                     <div id="verdict-display" style="display:none;" class="verdict-box">LAND REGION REGISTERED</div>
                     <p id="lbl-justification" style="font-size:14px; line-height:1.4; color:#cbd5e1; margin-top:15px; font-family:sans-serif;"></p>
