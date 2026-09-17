@@ -1,8 +1,17 @@
 import math
 from flask import Flask, request, jsonify
 
-# 🚨 CRITICAL VERCEL ENTRY POINT: Must sit uncovered at the top level
+
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    try:
+        with open('templates/index.html', 'r', encoding='utf-8') as f:
+            return f.read()
+    except Exception:
+        return "System UI Compilation Fault: Unable to load templates/index.html file context."
+
 
 PI_VAL = 3.1415926535
 
