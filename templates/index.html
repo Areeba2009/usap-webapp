@@ -252,6 +252,21 @@ Select execution target matrix on left device panel to initialize operations...<
                     <div style="position:absolute; top:45%; left:48%; background:var(--text-accent); width:10px; height:10px; border-radius:50%; box-shadow:0 0 15px #fff; z-index:5;"></div>
                     <span style="position:absolute; top:48%; left:46%; font-size:12px; color:#fff; font-family:'Anton', sans-serif; text-shadow:2px 2px #000; z-index:5;">LAHORE CENTER</span>
                 </div>
+
+                <div class="lahore-map-fallback" id="lahore-map" onclick="dispatchMapStabilityQuery(event)">
+                        <div style="position:absolute; top:45%; left:48%; background:var(--text-accent); width:10px; height:10px; border-radius:50%; box-shadow:0 0 15px #fff; z-index:5;"></div>
+                        <span style="position:absolute; top:48%; left:46%; font-size:12px; color:#fff; font-family:'Anton', sans-serif; text-shadow:2px 2px #000; z-index:5;">LAHORE CENTER</span>
+                    </div>
+                    
+                    <!--  CLEAN UI UPGRADE: Placed underneath map container layout -->
+                    <div style="background:#1e271b; padding:15px; border-radius:12px; border:1px solid #394433; margin-top:20px; box-sizing:border-box; width:100%; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+                        <span style="font-family:'Anton', sans-serif; font-size:12px; color:#c5b79d; display:block; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">Manual Coordinate Overdrive Entry</span>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <input type="text" id="manual-coords-field" placeholder="e.g. 31.5225, 74.4347" style="flex:1; padding:12px; background:#0b100a; border:1px solid #394433; color:#fff; border-radius:6px; box-sizing:border-box; font-family:monospace; font-size:14px; outline:none;">
+                            <button type="button" style="padding:12px 20px; background:#c5b79d; color:#0b100a; border:none; font-family:'Anton',sans-serif; text-transform:uppercase; border-radius:6px; cursor:pointer; font-size:13px; font-weight:bold; letter-spacing:0.5px; transition:0.2s;" onclick="executeKeyboardCoordinatePlot()">Plot Target</button>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="stability-readout">
                     <h3 style="margin-top:0; color:var(--text-accent); font-family:'Anton', sans-serif; letter-spacing:0.5px; text-transform:uppercase;">Lahore Regional Satellite Grid Stream</h3>
