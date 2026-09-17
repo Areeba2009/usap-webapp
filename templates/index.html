@@ -612,7 +612,17 @@ Select execution target matrix on left device panel to initialize operations...<
                     let vLine = document.createElement('div'); vLine.className='grid-line'; vLine.style.height='100%'; vLine.style.width='1px'; vLine.style.left=i+'%'; map.appendChild(vLine);
                 }
             }
-            setTimeout(() => toggleView('home'), 100);
+                        // Build visual targeting background cross-lines natively over map element
+            setTimeout(() => {
+                let map = document.getElementById('lahore-map');
+                if(map) {
+                    for(let i=10; i<100; i+=10){
+                        let hLine = document.createElement('div'); hLine.className='grid-line'; hLine.style.width='100%'; hLine.style.height='1px'; hLine.style.top=i+'%'; map.appendChild(hLine);
+                        let vLine = document.createElement('div'); vLine.className='grid-line'; vLine.style.height='100%'; vLine.style.width='1px'; vLine.style.left=i+'%'; map.appendChild(vLine);
+                    }
+                }
+                toggleView('home');
+            }, 100);
         })();
 
         function executeKeyboardCoordinatePlot() {
@@ -661,5 +671,3 @@ Select execution target matrix on left device panel to initialize operations...<
     </script>
 </body>
 </html>
-
-
