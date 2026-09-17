@@ -1,19 +1,18 @@
 import math
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
+# 🚨 CRITICAL VERCEL ENTRY POINT: Must sit uncovered at the top level
+app = Flask(__name__, template_folder='templates')
 
-app = Flask(__name__)
+PI_VAL = 3.1415926535
 
+# 🎯 NATIVE VERCEL HOMEPAGE ROUTER
 @app.route('/')
 def home():
     try:
-        with open('templates/index.html', 'r', encoding='utf-8') as f:
-            return f.read()
+        return render_template('index.html')
     except Exception:
-        return "System UI Compilation Fault: Unable to load templates/index.html file context."
-
-
-PI_VAL = 3.1415926535
+        return "System UI Compilation Fault: Unable to resolve templates/index.html via standard paths."
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
@@ -25,7 +24,6 @@ def calculate():
         raw_angle = float(inputs.get('angle', 0))
         raw_other_angle = float(inputs.get('other_arc_angle', 0))
         
-        # Strict Boundary Validation Filters
         if raw_angle > 360 or raw_other_angle > 360:
             return jsonify({'error': "Invalid Angle: Parameters cannot exceed 360° bounds."})
         if raw_angle < 0 or raw_other_angle < 0:
@@ -120,7 +118,6 @@ def stability_check():
         lat = float(data.get('lat', 31.52))
         lng = float(data.get('lng', 74.35))
         
-        # Procedural Land Form Simulation Formula Logic Node
         seed_factor = math.sin(lat * 1000) * math.cos(lng * 1000)
         elevation = 206.0 + abs(seed_factor * 8.0)
         moisture = 20.0 + abs(seed_factor * 60.0)
@@ -152,3 +149,4 @@ def stability_check():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
