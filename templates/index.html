@@ -604,17 +604,18 @@ Select execution target matrix on left device panel to initialize operations...<
             if (e.key === 'Enter') executeTerminalPrompt();
         });
 
-        (function constructTacticalGrid(){
+                (function constructTacticalGrid(){
             let map = document.getElementById('lahore-map');
             if(map) {
-                for(let i=10; i<100; i+=10){
+                                for(let i=10; i<100; i+=10){
                     let hLine = document.createElement('div'); hLine.className='grid-line'; hLine.style.width='100%'; hLine.style.height='1px'; hLine.style.top=i+'%'; map.appendChild(hLine);
                     let vLine = document.createElement('div'); vLine.className='grid-line'; vLine.style.height='100%'; vLine.style.width='1px'; vLine.style.left=i+'%'; map.appendChild(vLine);
                 }
             }
-            toggleView('home');
+            setTimeout(() => toggleView('home'), 100);
         })();
-         function executeKeyboardCoordinatePlot() {
+
+        function executeKeyboardCoordinatePlot() {
             let inputStr = document.getElementById('manual-coords-field').value.trim();
             if (!inputStr) return;
 
@@ -660,4 +661,5 @@ Select execution target matrix on left device panel to initialize operations...<
     </script>
 </body>
 </html>
+
 
